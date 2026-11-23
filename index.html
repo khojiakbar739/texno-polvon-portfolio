@@ -32,7 +32,20 @@ nav .logo img{height:44px;width:auto;display:block}
 nav a.l{padding:8px 14px;border-radius:999px;color:var(--mut);font-size:14px;transition:.2s}
 nav a.l:hover{color:var(--txt);background:var(--line)}
 nav a.btn{padding:9px 18px;border-radius:999px;background:var(--txt);color:var(--bg);font-weight:700;font-size:14px}
-@media(max-width:720px){nav a.l{display:none}}
+nav .burger{display:none;width:40px;height:40px;border:0;border-radius:50%;background:var(--line);cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:4px;margin-left:auto}
+nav .burger span{display:block;width:18px;height:2px;background:var(--txt);border-radius:2px;transition:.25s}
+nav.open .burger span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+nav.open .burger span:nth-child(2){opacity:0}
+nav.open .burger span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+@media(max-width:720px){
+nav{width:calc(100% - 24px);top:10px;padding:6px 8px 6px 14px;flex-wrap:wrap;border-radius:28px}
+nav .logo{margin-right:0}
+nav .burger{display:flex}
+nav a.btn.h{display:none}
+nav a.l,nav.open a.btn.h{display:none;width:100%;text-align:center;padding:12px 14px;font-size:16px}
+nav.open a.l{display:block}
+nav.open a.btn.h{display:block;margin:4px 0 4px}
+}
 section{padding:120px 6vw;max-width:1300px;margin:auto}
 /* hero */
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center}
@@ -113,6 +126,7 @@ footer{text-align:center;color:var(--mut);padding:40px;border-top:1px solid var(
 
 <nav>
   <a href="#" class="logo" aria-label="Texno Polvon bosh sahifa"><img src="img/LOGO-transparent.png" alt="Texno Polvon"></a>
+  <button class="burger" aria-label="Menyu" aria-expanded="false"><span></span><span></span><span></span></button>
   <a class="l" href="#xizmat">Xizmatlar</a>
   <a class="l" href="#loyiha">Loyihalar</a>
   <a class="l" href="#challenge">30 kun</a>
@@ -225,6 +239,10 @@ footer{text-align:center;color:var(--mut);padding:40px;border-top:1px solid var(
 <footer>© 2026 Texno Polvon · Khojiakbar Toshtemirov · 30 kun challenge — 1-kun</footer>
 
 <script>
+// mobile menu
+const nv=document.querySelector('nav'),bg=nv.querySelector('.burger');
+bg.addEventListener('click',()=>{const o=nv.classList.toggle('open');bg.setAttribute('aria-expanded',o)});
+nv.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nv.classList.remove('open');bg.setAttribute('aria-expanded',false)}));
 // cursor
 const c1=document.getElementById('cur'),c2=document.getElementById('cur2');let mx=0,my=0,x2=0,y2=0;
 addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;c1.style.left=mx+'px';c1.style.top=my+'px'});
