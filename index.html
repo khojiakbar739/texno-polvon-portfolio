@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Texno Polvon — Khojiakbar Toshtemirov</title>
+<link rel="icon" type="image/png" href="img/LOGO-transparent.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07070c;--card:#10101a;--line:#22223a;--txt:#ececf5;--mut:#8a8aa8;--a:#7c5cff;--b:#00e0ff;--c:#ff3d81}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:'Space Grotesk',sans-serif;overflow-x:hidden;cursor:none}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--a)}
+/* cursor */
+#cur,#cur2{position:fixed;pointer-events:none;z-index:999;border-radius:50%;transform:translate(-50%,-50%)}
+#cur{width:8px;height:8px;background:var(--b)}
+#cur2{width:40px;height:40px;border:1px solid var(--b);transition:width .25s,height .25s,background .25s}
+#cur2.big{width:80px;height:80px;background:rgba(0,224,255,.08)}
+@media(hover:none){#cur,#cur2{display:none}body{cursor:auto}}
+/* bg */
+canvas#net{position:fixed;inset:0;z-index:-2}
+.glow{position:fixed;width:600px;height:600px;border-radius:50%;filter:blur(120px);opacity:.35;z-index:-1;animation:float 18s ease-in-out infinite}
+.g1{background:var(--a);top:-200px;left:-150px}.g2{background:var(--c);bottom:-250px;right:-200px;animation-delay:-9s}
+@keyframes float{50%{transform:translate(120px,80px) scale(1.2)}}
+/* nav */
+nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:50;display:flex;gap:6px;align-items:center;padding:8px 8px 8px 20px;background:rgba(16,16,26,.6);backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:999px}
+nav .logo{margin-right:18px;display:flex;align-items:center}
+nav .logo img{height:44px;width:auto;display:block}
+nav a.l{padding:8px 14px;border-radius:999px;color:var(--mut);font-size:14px;transition:.2s}
+nav a.l:hover{color:var(--txt);background:var(--line)}
+nav a.btn{padding:9px 18px;border-radius:999px;background:var(--txt);color:var(--bg);font-weight:700;font-size:14px}
+@media(max-width:720px){nav a.l{display:none}}
+section{padding:120px 6vw;max-width:1300px;margin:auto}
+/* hero */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center}
+.badge{display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono';font-size:13px;color:var(--b);border:1px solid var(--line);padding:8px 14px;border-radius:999px;width:fit-content;margin-bottom:30px}
+.dot{width:8px;height:8px;border-radius:50%;background:#2bff88;box-shadow:0 0 12px #2bff88;animation:pulse 1.6s infinite}
+@keyframes pulse{50%{opacity:.3}}
+h1{font-size:clamp(44px,8.5vw,128px);line-height:.95;letter-spacing:-3px;font-weight:700}
+h1 .w{display:inline-block;overflow:hidden;vertical-align:bottom}
+h1 .w span{display:inline-block;transform:translateY(110%);animation:up .9s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes up{to{transform:none}}
+.grad{background:linear-gradient(90deg,var(--b),var(--a),var(--c),var(--b));background-size:300%;-webkit-background-clip:text;color:transparent;animation:gm 6s linear infinite}
+@keyframes gm{to{background-position:300%}}
+.type{font-family:'JetBrains Mono';font-size:clamp(16px,2vw,22px);color:var(--mut);margin-top:30px;min-height:1.5em}
+.type b{color:var(--txt)}
+.caret{display:inline-block;width:10px;height:1.1em;background:var(--b);vertical-align:middle;animation:pulse 1s steps(1) infinite}
+.cta{display:flex;gap:14px;margin-top:44px;flex-wrap:wrap}
+.b1,.b2{padding:16px 28px;border-radius:14px;font-weight:700;font-size:16px;transition:.3s;position:relative;overflow:hidden}
+.b1{background:linear-gradient(90deg,var(--a),var(--c));box-shadow:0 10px 40px -10px var(--a)}
+.b1:hover{transform:translateY(-3px);box-shadow:0 20px 50px -10px var(--c)}
+.b2{border:1px solid var(--line)}.b2:hover{border-color:var(--b);color:var(--b)}
+/* marquee */
+.mq{border-block:1px solid var(--line);overflow:hidden;padding:22px 0;background:rgba(16,16,26,.5)}
+.mq div{display:flex;gap:50px;width:max-content;animation:mq 30s linear infinite;font-size:28px;font-weight:700;color:var(--mut)}
+.mq div span:nth-child(odd){color:transparent;-webkit-text-stroke:1px var(--mut)}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* titles */
+.tag{font-family:'JetBrains Mono';color:var(--b);font-size:14px}
+h2{font-size:clamp(34px,5vw,64px);letter-spacing:-1.5px;margin:10px 0 50px;line-height:1.05}
+.rv{opacity:0;transform:translateY(40px);transition:1s cubic-bezier(.2,.8,.2,1)}
+.rv.on{opacity:1;transform:none}
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.st{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:30px}
+.st b{font-size:54px;display:block;letter-spacing:-2px}
+.st span{color:var(--mut)}
+/* services */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:32px;position:relative;overflow:hidden;transform-style:preserve-3d;transition:transform .15s,border-color .3s}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(400px circle at var(--x,50%) var(--y,50%),rgba(124,92,255,.18),transparent 40%);opacity:0;transition:.3s}
+.card:hover::before{opacity:1}.card:hover{border-color:#3a3a60}
+.ic{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;font-size:26px;background:linear-gradient(135deg,rgba(124,92,255,.25),rgba(0,224,255,.15));margin-bottom:22px}
+.card h3{font-size:22px;margin-bottom:10px}.card p{color:var(--mut);line-height:1.6}
+.num{position:absolute;top:24px;right:28px;font-family:'JetBrains Mono';color:var(--line);font-size:14px}
+/* projects */
+.pj{display:grid;gap:22px}
+.p{display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:28px;padding:26px}
+@media(max-width:800px){.p{grid-template-columns:1fr}}
+.scr{aspect-ratio:16/10;border-radius:18px;background:#0b0b14;border:1px solid var(--line);overflow:hidden;position:relative}
+.bar{height:30px;display:flex;gap:6px;align-items:center;padding:0 12px;border-bottom:1px solid var(--line)}
+.bar i{width:10px;height:10px;border-radius:50%;background:#333}.bar i:first-child{background:#ff5f57}.bar i:nth-child(2){background:#febc2e}.bar i:nth-child(3){background:#28c840}
+.mock{padding:18px;display:grid;gap:10px}
+.ln{height:12px;border-radius:6px;background:linear-gradient(90deg,var(--line),#2c2c48,var(--line));background-size:200%;animation:sh 2s infinite}
+@keyframes sh{to{background-position:-200%}}
+.chat{padding:16px;display:flex;flex-direction:column;gap:10px;font-size:13px}
+.msg{max-width:75%;padding:10px 14px;border-radius:14px;opacity:0;animation:pop .5s forwards}
+.msg.u{align-self:flex-end;background:var(--a)}.msg.bt{background:#1d1d30}
+@keyframes pop{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.chips span{font-family:'JetBrains Mono';font-size:12px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;color:var(--mut)}
+.p h3{font-size:30px;letter-spacing:-.5px;margin:8px 0 12px}.p p{color:var(--mut);line-height:1.6}
+/* challenge */
+.ch{background:linear-gradient(135deg,#1a1033,#0d1a2b);border:1px solid var(--line);border-radius:32px;padding:50px;text-align:center;position:relative;overflow:hidden}
+.days{display:grid;grid-template-columns:repeat(10,1fr);gap:8px;max-width:640px;margin:34px auto 0}
+.d{aspect-ratio:1;border-radius:10px;border:1px solid var(--line);display:grid;place-items:center;font-family:'JetBrains Mono';font-size:12px;color:var(--mut)}
+.d.done{background:linear-gradient(135deg,var(--a),var(--c));color:#fff;border:none;box-shadow:0 0 20px var(--a)}
+/* contact */
+.ct{text-align:center}
+.big{font-size:clamp(40px,8vw,110px);letter-spacing:-3px;line-height:1;font-weight:700}
+.links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:40px}
+.links a{padding:16px 24px;border:1px solid var(--line);border-radius:16px;background:var(--card);transition:.3s;font-weight:500}
+.links a:hover{border-color:var(--b);transform:translateY(-4px);box-shadow:0 10px 30px -10px var(--b)}
+footer{text-align:center;color:var(--mut);padding:40px;border-top:1px solid var(--line);font-size:14px}
+</style>
+</head>
+<body>
+<div id="cur"></div><div id="cur2"></div>
+<canvas id="net"></canvas><div class="glow g1"></div><div class="glow g2"></div>
+
+<nav>
+  <a href="#" class="logo" aria-label="Texno Polvon bosh sahifa"><img src="img/LOGO-transparent.png" alt="Texno Polvon"></a>
+  <a class="l" href="#xizmat">Xizmatlar</a>
+  <a class="l" href="#loyiha">Loyihalar</a>
+  <a class="l" href="#challenge">30 kun</a>
+  <a class="btn h" href="https://t.me/khojiakbar739" target="_blank">Bog'lanish</a>
+</nav>
+
+<section class="hero">
+  <div class="badge"><span class="dot"></span>Yangi loyihalarga ochiqman</div>
+  <h1>
+    <span class="w"><span>Biznesingizni</span></span><br>
+    <span class="w"><span style="animation-delay:.12s" class="grad">raqamli</span></span>
+    <span class="w"><span style="animation-delay:.24s">dunyoga</span></span><br>
+    <span class="w"><span style="animation-delay:.36s">olib chiqaman.</span></span>
+  </h1>
+  <div class="type">&gt; Men <b>Khojiakbar</b> — <span id="tw"></span><span class="caret"></span></div>
+  <div class="cta">
+    <a class="b1 h" href="https://t.me/khojiakbar739" target="_blank">Loyiha boshlash →</a>
+    <a class="b2 h" href="#loyiha">Ishlarimni ko'rish</a>
+  </div>
+</section>
+
+<div class="mq"><div id="mqi"></div></div>
+
+<section>
+  <div class="stats">
+    <div class="st rv"><b data-n="30">0</b><span>kunda 30 ta loyiha</span></div>
+    <div class="st rv"><b data-n="50" data-s="+">0</b><span>bajarilgan buyurtma</span></div>
+    <div class="st rv"><b data-n="24" data-s="/7">0</b><span>ishlaydigan botlar</span></div>
+    <div class="st rv"><b data-n="100" data-s="%">0</b><span>mobilga moslashgan</span></div>
+  </div>
+</section>
+
+<section id="xizmat">
+  <div class="tag rv">// xizmatlar</div>
+  <h2 class="rv">Nima qila olaman?</h2>
+  <div class="grid">
+    <div class="card rv"><span class="num">01</span><div class="ic">🌐</div><h3>Veb-saytlar</h3><p>Landing, korporativ sayt, onlayn do'kon — tez, chiroyli va Google'da topiladigan.</p></div>
+    <div class="card rv"><span class="num">02</span><div class="ic">🤖</div><h3>Telegram botlar</h3><p>Buyurtma, navbat, to'lov, CRM — biznesingiz 24/7 o'zi ishlaydi.</p></div>
+    <div class="card rv"><span class="num">03</span><div class="ic">📱</div><h3>Mobil ilovalar</h3><p>Android va iOS uchun Flutter ilovalar — bitta kod, ikki platforma.</p></div>
+    <div class="card rv"><span class="num">04</span><div class="ic">⚙️</div><h3>Avtomatlashtirish</h3><p>Admin panel, CRM, hisobotlar — qo'lda qilinadigan ishlarni dastur qiladi.</p></div>
+    <div class="card rv"><span class="num">05</span><div class="ic">☁️</div><h3>Server va domen</h3><p>Hosting, domen, SSL — saytingiz ishlashi uchun hammasini sozlab beraman.</p></div>
+    <div class="card rv"><span class="num">06</span><div class="ic">🎬</div><h3>Marketing va kontent</h3><p>Reels, reklama, SMM — mijozlar sizni topishi uchun.</p></div>
+  </div>
+</section>
+
+<section id="loyiha">
+  <div class="tag rv">// loyihalar</div>
+  <h2 class="rv">Tanlangan ishlar</h2>
+  <div class="pj">
+    <div class="p rv">
+      <div class="scr"><div class="bar"><i></i><i></i><i></i></div>
+        <div class="chat">
+          <div class="msg u" style="animation-delay:.3s">iPhone 13 qancha turadi?</div>
+          <div class="msg bt" style="animation-delay:1.1s">📱 iPhone 13 128GB — taxminiy narx tayyor. Muqobillarini ham ko'rsataymi?</div>
+          <div class="msg u" style="animation-delay:1.9s">Ha, ko'rsating</div>
+          <div class="msg bt" style="animation-delay:2.7s">✅ 3 ta muqobil topildi + narx tarixi</div>
+        </div></div>
+      <div><div class="tag">Telegram bot + Mini App</div><h3>Telefon narxi boti</h3><p>Telefon narxini baholash, muqobillar, narx tarixi va trade-in — bitta botda.</p><div class="chips"><span>Python</span><span>Mini App</span><span>Telegram API</span></div></div>
+    </div>
+    <div class="p rv">
+      <a class="scr" href="https://tift-fintech.uz/" target="_blank" rel="noopener" aria-label="TIFT Fintech saytini ochish"><div class="bar"><i></i><i></i><i></i></div>
+        <div class="mock"><div class="ln" style="width:35%;height:22px"></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px"><div class="ln" style="height:120px"></div><div class="ln" style="height:120px"></div></div></div></a>
+      <div><div class="tag">Fintech platformasi</div><h3><a href="https://tift-fintech.uz/" target="_blank" rel="noopener">TIFT Fintech</a></h3><p>Raqamli moliyaviy xizmatlar va fintech platformasi uchun zamonaviy korporativ veb-sayt.</p><div class="chips"><span>Web development</span><span>UI/UX</span><span>Responsive</span></div></div>
+    </div>
+    <div class="p rv">
+      <a class="scr" href="https://savdohisob.uz/" target="_blank" rel="noopener" aria-label="Savdo Hisob saytini ochish"><div class="bar"><i></i><i></i><i></i></div>
+        <div class="mock"><div class="ln" style="width:30%;height:22px"></div><div class="ln" style="width:100%;height:38px;margin-top:14px"></div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px"><div class="ln" style="height:80px"></div><div class="ln" style="height:80px"></div><div class="ln" style="height:80px"></div></div></div></a>
+      <div><div class="tag">CRM va savdo tizimi</div><h3><a href="https://savdohisob.uz/" target="_blank" rel="noopener">SavdoHisob.uz</a></h3><p>Savdo, ombor, mijozlar va moliyaviy hisoblarni bitta platformada boshqarish tizimi.</p><div class="chips"><span>CRM</span><span>Admin panel</span><span>Avtomatlashtirish</span></div></div>
+    </div>
+    <div class="p rv">
+      <div class="scr"><div class="bar"><i></i><i></i><i></i></div>
+        <div class="mock"><div class="ln" style="width:40%;height:22px"></div><div class="ln"></div><div class="ln" style="width:80%"></div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px"><div class="ln" style="height:60px"></div><div class="ln" style="height:60px"></div><div class="ln" style="height:60px"></div></div></div></div>
+      <div><div class="tag">Veb-sayt</div><h3>Universitet dars jadvali</h3><p>Excel jadvallardan avtomatik yangilanadigan, talabalar uchun qulay dars jadvali sayti.</p><div class="chips"><span>HTML/JS</span><span>Netlify</span><span>Excel parser</span></div></div>
+    </div>
+    <div class="p rv">
+      <div class="scr"><div class="bar"><i></i><i></i><i></i></div>
+        <div class="mock"><div style="display:flex;gap:10px"><div class="ln" style="width:30%;height:90px"></div><div style="flex:1;display:grid;gap:10px"><div class="ln"></div><div class="ln" style="width:70%"></div><div class="ln" style="width:50%"></div></div></div><div class="ln" style="height:40px;margin-top:6px"></div></div></div>
+      <div><div class="tag">Mobil ilova</div><h3>Kaloriya hisoblagich</h3><p>Ovqat rasmini, matnini yoki ovozni yuborasiz — ilova kaloriyasini hisoblaydi.</p><div class="chips"><span>Flutter</span><span>AI</span><span>Android/iOS</span></div></div>
+    </div>
+  </div>
+  <h2 class="rv" style="font-size:clamp(28px,4vw,44px);margin:90px 0 28px">Boshqa loyihalar</h2>
+  <div class="grid">
+    <div class="card rv"><span class="num">01</span><div class="ic">🛒</div><h3>Do'kon CRM</h3><p>Ombor, savdo, xaridorlar va moliyaviy hisobotlarni boshqarish.</p></div>
+    <div class="card rv"><span class="num">02</span><div class="ic">🎓</div><h3>Ta'lim botlari</h3><p>Qabul, darslar, testlar va o'quvchilar uchun avtomatik bildirishnomalar.</p></div>
+    <div class="card rv"><span class="num">03</span><div class="ic">🏢</div><h3>Korporativ saytlar</h3><p>Kompaniyalar uchun zamonaviy, tez va mobilga mos web-yechimlar.</p></div>
+  </div>
+</section>
+
+<section id="challenge">
+  <div class="ch rv">
+    <div class="tag">// challenge</div>
+    <h2 style="margin-bottom:10px">30 kun — <span class="grad">30 loyiha</span></h2>
+    <p style="color:var(--mut);max-width:560px;margin:auto">Har kuni yangi sayt yoki bot. Jarayonni Instagram'da <b style="color:var(--txt)">@texno_polvon</b> sahifasida kuzating.</p>
+    <div class="days" id="days"></div>
+  </div>
+</section>
+
+<section class="ct">
+  <div class="tag rv">// aloqa</div>
+  <div class="big rv">Sizga ham shunday<br><span class="grad">sayt yoki bot</span> kerakmi?</div>
+  <p class="rv" style="color:var(--mut);margin-top:20px;font-size:18px">Bizga murojaat qiling — g'oyangizni ishlaydigan mahsulotga aylantiramiz.</p>
+  <div class="links rv">
+    <a class="h" href="https://t.me/khojiakbar739" target="_blank">✈️ Telegram @khojiakbar739</a>
+    <a class="h" href="https://instagram.com/texno_polvon" target="_blank">📸 @texno_polvon</a>
+    <a class="h" href="tel:+998977392363">📞 +998 97 739 23 63</a>
+    <a class="h" href="https://youtube.com/@Texno_polvon" target="_blank">▶️ YouTube</a>
+  </div>
+</section>
+<footer>© 2026 Texno Polvon · Khojiakbar Toshtemirov · 30 kun challenge — 1-kun</footer>
+
+<script>
+// cursor
+const c1=document.getElementById('cur'),c2=document.getElementById('cur2');let mx=0,my=0,x2=0,y2=0;
+addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;c1.style.left=mx+'px';c1.style.top=my+'px'});
+(function l(){x2+=(mx-x2)*.15;y2+=(my-y2)*.15;c2.style.left=x2+'px';c2.style.top=y2+'px';requestAnimationFrame(l)})();
+document.querySelectorAll('a,.card').forEach(el=>{el.addEventListener('mouseenter',()=>c2.classList.add('big'));el.addEventListener('mouseleave',()=>c2.classList.remove('big'))});
+// typewriter
+const words=['veb-sayt yarataman','Telegram bot yozaman','mobil ilova qilaman','biznesni avtomatlashtiraman'];let wi=0,ci=0,del=false;const tw=document.getElementById('tw');
+(function t(){const w=words[wi];tw.textContent=w.slice(0,ci);if(!del&&ci++===w.length){del=true;return setTimeout(t,1500)}if(del&&ci--===0){del=false;wi=(wi+1)%words.length}setTimeout(t,del?40:80)})();
+// marquee
+const mqw=['HTML','CSS','JavaScript','Python','Telegram Bot','Flutter','Node.js','React','SEO','CRM','Admin panel','Mini App'];
+document.getElementById('mqi').innerHTML=[...mqw,...mqw].map(w=>`<span>${w}</span><span>✦</span>`).join('');
+// reveal + counters
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('on');const b=e.target.querySelector('[data-n]');if(b&&!b.done){b.done=1;const n=+b.dataset.n,s=b.dataset.s||'';let i=0;const st=setInterval(()=>{i+=Math.ceil(n/40);if(i>=n){i=n;clearInterval(st)}b.textContent=i+s},30)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%3)*.1+'s';io.observe(el)});
+// card tilt + spotlight
+document.querySelectorAll('.card').forEach(c=>{c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;c.style.setProperty('--x',x+'px');c.style.setProperty('--y',y+'px');c.style.transform=`perspective(800px) rotateY(${(x/r.width-.5)*10}deg) rotateX(${(.5-y/r.height)*10}deg)`});c.addEventListener('mouseleave',()=>c.style.transform='')});
+// days
+document.getElementById('days').innerHTML=Array.from({length:30},(_,i)=>`<div class="d ${i<1?'done':''}">${i+1}</div>`).join('');
+// network bg
+const cv=document.getElementById('net'),x=cv.getContext('2d');let P=[];
+function rs(){cv.width=innerWidth;cv.height=innerHeight;P=Array.from({length:Math.min(80,innerWidth/15)},()=>({x:Math.random()*cv.width,y:Math.random()*cv.height,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4}))}rs();addEventListener('resize',rs);
+(function d(){x.clearRect(0,0,cv.width,cv.height);P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>cv.width)p.vx*=-1;if(p.y<0||p.y>cv.height)p.vy*=-1;x.fillStyle='rgba(124,92,255,.6)';x.fillRect(p.x,p.y,2,2)});
+for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){const a=P[i],b=P[j],dd=Math.hypot(a.x-b.x,a.y-b.y);if(dd<130){x.strokeStyle=`rgba(0,224,255,${.12*(1-dd/130)})`;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke()}}
+const m=Math.hypot(mx,my);P.forEach(p=>{const dd=Math.hypot(p.x-mx,p.y-my);if(dd<180){x.strokeStyle=`rgba(255,61,129,${.3*(1-dd/180)})`;x.beginPath();x.moveTo(p.x,p.y);x.lineTo(mx,my);x.stroke()}});requestAnimationFrame(d)})();
+</script>
+</body>
+</html>
