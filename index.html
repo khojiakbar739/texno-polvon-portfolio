@@ -177,6 +177,11 @@ footer{text-align:center;color:var(--mut);padding:40px;border-top:1px solid var(
   <h2 class="rv">Tanlangan ishlar</h2>
   <div class="pj">
     <div class="p rv">
+      <a class="scr" href="https://30kun-30loyiha-texnopolvon.netlify.app/2-kun/?stol=5" target="_blank" rel="noopener" aria-label="Lazzat Kafe menyusini ochish"><div class="bar"><i></i><i></i><i></i></div>
+        <div class="mock"><div class="ln" style="width:45%;height:22px"></div><div class="ln" style="width:100%;height:56px;margin-top:12px"></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px"><div class="ln" style="height:90px"></div><div class="ln" style="height:90px"></div></div></div></a>
+      <div><div class="tag">Veb-ilova · NFC va QR · 2-kun</div><h3><a href="https://30kun-30loyiha-texnopolvon.netlify.app/2-kun/?stol=5" target="_blank" rel="noopener">Lazzat Kafe — stoldan buyurtma</a></h3><p>Mijoz stoldagi NFC yoki QR orqali menyuni ochadi, buyurtma beradi, ofitsiantni chaqiradi. Oshxona paneli va Telegram bildirishnomalari bilan.</p><div class="chips"><span>HTML/JS</span><span>NFC/QR</span><span>Telegram API</span><span>Netlify</span></div></div>
+    </div>
+    <div class="p rv">
       <div class="scr"><div class="bar"><i></i><i></i><i></i></div>
         <div class="chat">
           <div class="msg u" style="animation-delay:.3s">iPhone 13 qancha turadi?</div>
@@ -260,7 +265,7 @@ document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%3)
 // card tilt + spotlight
 document.querySelectorAll('.card').forEach(c=>{c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;c.style.setProperty('--x',x+'px');c.style.setProperty('--y',y+'px');c.style.transform=`perspective(800px) rotateY(${(x/r.width-.5)*10}deg) rotateX(${(.5-y/r.height)*10}deg)`});c.addEventListener('mouseleave',()=>c.style.transform='')});
 // days
-document.getElementById('days').innerHTML=Array.from({length:30},(_,i)=>`<div class="d ${i<1?'done':''}">${i+1}</div>`).join('');
+document.getElementById('days').innerHTML=Array.from({length:30},(_,i)=>`<div class="d ${i<2?'done':''}">${i+1}</div>`).join('');
 // network bg
 const cv=document.getElementById('net'),x=cv.getContext('2d');let P=[];
 function rs(){cv.width=innerWidth;cv.height=innerHeight;P=Array.from({length:Math.min(80,innerWidth/15)},()=>({x:Math.random()*cv.width,y:Math.random()*cv.height,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4}))}rs();addEventListener('resize',rs);
