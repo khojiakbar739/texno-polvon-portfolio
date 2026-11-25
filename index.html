@@ -97,6 +97,8 @@ h2{font-size:clamp(34px,5vw,64px);letter-spacing:-1.5px;margin:10px 0 50px;line-
 .bar{height:30px;display:flex;gap:6px;align-items:center;padding:0 12px;border-bottom:1px solid var(--line)}
 .bar i{width:10px;height:10px;border-radius:50%;background:#333}.bar i:first-child{background:#ff5f57}.bar i:nth-child(2){background:#febc2e}.bar i:nth-child(3){background:#28c840}
 .mock{padding:18px;display:grid;gap:10px}
+.shot{display:block;width:100%;height:calc(100% - 30px);object-fit:cover;object-position:top center;transition:transform .5s}
+a.scr:hover .shot{transform:scale(1.03)}
 .ln{height:12px;border-radius:6px;background:linear-gradient(90deg,var(--line),#2c2c48,var(--line));background-size:200%;animation:sh 2s infinite}
 @keyframes sh{to{background-position:-200%}}
 .chat{padding:16px;display:flex;flex-direction:column;gap:10px;font-size:13px}
@@ -177,8 +179,13 @@ footer{text-align:center;color:var(--mut);padding:40px;border-top:1px solid var(
   <h2 class="rv">Tanlangan ishlar</h2>
   <div class="pj">
     <div class="p rv">
+      <a class="scr" href="https://30kun-30loyiha-texnopolvon.netlify.app/3-kun/" target="_blank" rel="noopener" aria-label="Burger konstruktorini ochish"><div class="bar"><i></i><i></i><i></i></div>
+        <img class="shot" src="img/projects/burger-konstruktor.jpg" alt="Burger konstruktori skrinshoti" loading="lazy" width="1200" height="750"></a>
+      <div><div class="tag">Veb-ilova · Konstruktor · 3-kun</div><h3><a href="https://30kun-30loyiha-texnopolvon.netlify.app/3-kun/" target="_blank" rel="noopener">Burger konstruktor</a></h3><p>Mijoz burger, hot-dog yoki sendvichni qatlamma-qatlam o'zi yig'adi: narx va kaloriya jonli hisoblanadi, buyurtma oshxonaga va Telegramga boradi. Qatlam rasmlari lokal AI bilan yaratilgan.</p><div class="chips"><span>HTML/JS</span><span>AI grafika</span><span>Telegram API</span><span>Netlify</span></div></div>
+    </div>
+    <div class="p rv">
       <a class="scr" href="https://30kun-30loyiha-texnopolvon.netlify.app/2-kun/?stol=5" target="_blank" rel="noopener" aria-label="Lazzat Kafe menyusini ochish"><div class="bar"><i></i><i></i><i></i></div>
-        <div class="mock"><div class="ln" style="width:45%;height:22px"></div><div class="ln" style="width:100%;height:56px;margin-top:12px"></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px"><div class="ln" style="height:90px"></div><div class="ln" style="height:90px"></div></div></div></a>
+        <img class="shot" src="img/projects/lazzat.jpg" alt="Lazzat Kafe menyusi skrinshoti" loading="lazy" width="1200" height="750"></a>
       <div><div class="tag">Veb-ilova · NFC va QR · 2-kun</div><h3><a href="https://30kun-30loyiha-texnopolvon.netlify.app/2-kun/?stol=5" target="_blank" rel="noopener">Lazzat Kafe — stoldan buyurtma</a></h3><p>Mijoz stoldagi NFC yoki QR orqali menyuni ochadi, buyurtma beradi, ofitsiantni chaqiradi. Oshxona paneli va Telegram bildirishnomalari bilan.</p><div class="chips"><span>HTML/JS</span><span>NFC/QR</span><span>Telegram API</span><span>Netlify</span></div></div>
     </div>
     <div class="p rv">
@@ -193,19 +200,18 @@ footer{text-align:center;color:var(--mut);padding:40px;border-top:1px solid var(
     </div>
     <div class="p rv">
       <a class="scr" href="https://tift-fintech.uz/" target="_blank" rel="noopener" aria-label="TIFT Fintech saytini ochish"><div class="bar"><i></i><i></i><i></i></div>
-        <div class="mock"><div class="ln" style="width:35%;height:22px"></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px"><div class="ln" style="height:120px"></div><div class="ln" style="height:120px"></div></div></div></a>
+        <img class="shot" src="img/projects/tift.jpg" alt="TIFT Fintech sayti skrinshoti" loading="lazy" width="1200" height="750"></a>
       <div><div class="tag">Fintech platformasi</div><h3><a href="https://tift-fintech.uz/" target="_blank" rel="noopener">TIFT Fintech</a></h3><p>Raqamli moliyaviy xizmatlar va fintech platformasi uchun zamonaviy korporativ veb-sayt.</p><div class="chips"><span>Web development</span><span>UI/UX</span><span>Responsive</span></div></div>
     </div>
     <div class="p rv">
       <a class="scr" href="https://savdohisob.uz/" target="_blank" rel="noopener" aria-label="Savdo Hisob saytini ochish"><div class="bar"><i></i><i></i><i></i></div>
-        <div class="mock"><div class="ln" style="width:30%;height:22px"></div><div class="ln" style="width:100%;height:38px;margin-top:14px"></div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px"><div class="ln" style="height:80px"></div><div class="ln" style="height:80px"></div><div class="ln" style="height:80px"></div></div></div></a>
+        <img class="shot" src="img/projects/savdohisob.jpg" alt="SavdoHisob tizimi skrinshoti" loading="lazy" width="1200" height="750"></a>
       <div><div class="tag">CRM va savdo tizimi</div><h3><a href="https://savdohisob.uz/" target="_blank" rel="noopener">SavdoHisob.uz</a></h3><p>Savdo, ombor, mijozlar va moliyaviy hisoblarni bitta platformada boshqarish tizimi.</p><div class="chips"><span>CRM</span><span>Admin panel</span><span>Avtomatlashtirish</span></div></div>
     </div>
     <div class="p rv">
-      <div class="scr"><div class="bar"><i></i><i></i><i></i></div>
-        <div class="mock"><div class="ln" style="width:40%;height:22px"></div><div class="ln"></div><div class="ln" style="width:80%"></div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px"><div class="ln" style="height:60px"></div><div class="ln" style="height:60px"></div><div class="ln" style="height:60px"></div></div></div></div>
-      <div><div class="tag">Veb-sayt</div><h3>Universitet dars jadvali</h3><p>Excel jadvallardan avtomatik yangilanadigan, talabalar uchun qulay dars jadvali sayti.</p><div class="chips"><span>HTML/JS</span><span>Netlify</span><span>Excel parser</span></div></div>
+      <a class="scr" href="https://dars-jadvali-univ.netlify.app/" target="_blank" rel="noopener" aria-label="Dars jadvali saytini ochish"><div class="bar"><i></i><i></i><i></i></div>
+        <img class="shot" src="img/projects/dars-jadvali.jpg" alt="Universitet dars jadvali sayti skrinshoti" loading="lazy" width="1200" height="750"></a>
+      <div><div class="tag">Veb-sayt</div><h3><a href="https://dars-jadvali-univ.netlify.app/" target="_blank" rel="noopener">Universitet dars jadvali</a></h3><p>Excel jadvallardan avtomatik yangilanadigan, talabalar uchun qulay dars jadvali sayti.</p><div class="chips"><span>HTML/JS</span><span>Netlify</span><span>Excel parser</span></div></div>
     </div>
     <div class="p rv">
       <div class="scr"><div class="bar"><i></i><i></i><i></i></div>
